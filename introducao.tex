@@ -1,0 +1,126 @@
+%=======================================================================
+% Introdução
+%=======================================================================
+\chapter{Introdução}
+
+\subsection{Origens da programação orientada a objeto.}
+
+% as epígrafes nos capítulos são opcionais
+Antes de adentrar no paradigma funcional, é fundamental compreender as origens e os princípios da Programação Orientada a Objetos (OOP). Os primeiros conceitos surgiram com a Simula67 desenvolvida pelo norueguês Kristen Nygaard em 1957 no Centro Norueguês de computação em Oslo, percebendo a necessidade de uma linguagem melhor para descrever sistemas complexos. Posteriormente Nygaard convidou Ole-Johan Dahl para o projeto, percebendo que ele precisava de alguém com mais habilidades do que ele tinha em programação. A Partir disso, juntos criaram a linguagem Simula. Em 1963, o Centro Norueguês de Computação obteve um UNIVAC 1107, onde a Simula foi implementado, tornando-se operacional em 1965. 
+
+
+A definição final de orientação a objetos surgiu com Alan Kay na linguagem Smalltalk, sofrendo grandes influências da linguagem Simula67 (\citeonline{Kay93}). O cientista da computação é conhecido por ser um dos pais do conceito de programação orientada a objetos, graduou-se em Matemática e Biologia Molecular, cujos conhecimentos lhe permitiram formular seu postulado “algébrico-biológico” em que o computador ideal deveria funcionar como um organismo vivo, isto é, cada "célula" comportar-se-ia relacionando-se com outras a fim de alcançar um objetivo, contudo, funcionando de forma autônoma. As células poderiam também reagrupar-se para resolver um outro problema ou desempenhar outras funções.
+
+\begin{quote}
+“O computador ideal deve funcionar como um organismo vivo, isto é, cada célula se relaciona com outras a fim de alcançar um objetivo, mas cada uma funciona de forma autônoma. As células poderiam também reagrupar-se para resolver um outro problema ou desempenhar outras funções.” - Alan Kay (\citeonline{Kay93})
+\end{quote}
+
+\subsection{Introdução a programação funcional}
+
+Antes mesmo da criação da Smalltalk com Alan Kay, na década de 1930, Alonzo Church na década introduziu o conceito de cálculo lambda, conceito extremamente relevante que formalizou expressões funcionais e desempenhou um papel crucial no desenvolvimento da teoria da computação.
+
+ Alonzo Church foi um matemático, professor universitário, cientista de computação e filósofo estadunidense, atuou principalmente nas áreas de lógica matemática, teoria da recursão e teoria de computação, frequentando durante a maior parte de sua vida, a Universidade de Princeton e a Universidade da Califórnia. Sendo sua maior contribuição o cálculo lambda. No artigo “An Unsolvable Problem of Elementary Number Theory” (\citeonline{Church1936}), Church apresenta um dos marcos históricos da teoria da computação, provando a existência de problemas que são insolúveis, ou seja, que não podem ser resolvidos por nenhum algoritmo, Ele afirmou: “A matemática não é uma ciência dedutiva - quando vemos um novo resultado, geralmente o adivinhamos antes de prová-lo, e a prova serve para verificar nosso palpite” - Alonzo Church (\citeonline{Church1936}). Esse trabalho introduz o cálculo lambda como uma ferramenta para descrever algoritmos e demonstrar que determinados problemas, como o problema da decisão (Entscheidungsproblem) em aritmética, não podem ser resolvidos computacionalmente. Esse conceito de indecidibilidade foi posteriormente expandido por Alan Turing, que, no mesmo ano, publicou seu artigo sobre a "Máquina de Turing", chegando a conclusões similares, mas com uma abordagem diferente.
+
+\subsection{Lambda e Suas Estruturas}
+
+Um programa Lambda se escreve como um conjunto de expressões lambda (\citeonline{Lipovaca11}). Normalmente, usando notação simplificada encontra-se o símbolo lambda seguido de lista de variáveis. Limitando estas variáveis vem um ponto ".'', seguido pelo corpo da função. As variáveis são chamadas de parâmetros formais e diz-se que o lambda os liga. Acompanhe no Quadro 1 abaixo um exemplo simples de estrutura Lambda:
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 1 - Exemplo de Estrutura Lambda}]
+\begin{lstlisting}[language=Lisp]
+λx.(x + 1)
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+O exemplo acima pode ser lido: ''Aquela ( ) função de (x) a qual (.) adiciona x a 1. Algumas vezes costuma-se usar operadores sempre prefixados, e neste caso se escreveria (+ x 1). Para calcular o valor da função para x = 5 se escreve:
+
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 2 - Cálculo do Valor de uma Função Lambda}]
+\begin{lstlisting}[language=Lisp]
+λx.(x + 1).5
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+Uma abstração lambda sempre consiste dessas partes: o l, o parâmetro formal,  e o corpo. Uma abstração lambda pode ser considerada similar a uma definição de função em uma linguagem de programação. convencional, como ''C":
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 3 - Exemplo de Função em C}]
+\begin{lstlisting}[language=C]
+inc(x)
+    int x;
+    return (x + 1);
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+Funções embutidas como + não existem no cálculo lambda na sua forma mais pura. Para fins práticos, uma extensão que as suporte é útil. Estas incluem funções aritméticas (como +, -, *, /), constantes (como 0, 1,...), funções lógicas (como AND, NOT, OR,...) e constantes lógicas (TRUE, FALSE).\\
+
+Exemplos:
+
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 4 - Exemplos de Funções Aritméticas e Lógicas}]
+\begin{lstlisting}[language=Lisp]
+- 5 4 -> 1
+AND TRUE FALSE -> FALSE
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+Também incluímos uma função condicional, cujo valor é descrito pelas regras de redução abaixo no quadro 5:
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 5 - Função Condicional no Cálculo Lambda}]
+\begin{lstlisting}[language=Lisp]
+IF TRUE E_t E_f -> E_t
+IF FALSE E_t E_f -> E_f
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+Construtores de dados em cálculo lambda serão introduzidos inicialmente através da definição de três funções embutidas: CONS, HEAD e TAIL (as quais se comportam exatamente como as funções LISP: CONS, CAR e CDR).
+CONS constrói um objeto composto, o qual pode ser desmantelado com HEAD e  TAIL. A operação é descrita pelas seguintes regras de redução:
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Quadro 6 - Construtores de Dados no Cálculo Lambda}]
+\begin{lstlisting}[language=Lisp]
+HEAD (CONS a b) -> a
+TAIL (CONS a b) -> b
+\end{lstlisting}
+\caption{}
+\end{tcolorbox}
+
+Além dessas funções , define-se a constante NIL, o valor nulo. A escolha exata de funções embutidas é arbitrária.\\
+
+
+Após o conceito desenvolvido por Church, que estabeleceu as bases para o tratamento formal de funções, esses conceitos começaram a influenciar diretamente o desenvolvimento de linguagens de programação. Um dos primeiros exemplos práticos dessa influência foi o LISP (List Processing), criado por John McCarthy em 1958. A linguagem incorporou muitos dos princípios da programação funcional, como a manipulação de funções como dados, e se destacou por seu uso em inteligência artificial e no tratamento de estruturas simbólicas, e por sua vez, influenciando várias gerações de linguagens futuras, como Clojure (\citeonline{Hickey2020}), um dialeto de Lisp, que será abordada neste trabalho, além de Haskell, ML, Elixir. A grande maioria dessas linguagens foram desenvolvidas em ambientes acadêmicos, mas com o passar do tempo, começaram a ganhar popularidade comercial.
+
+\subsection{Pensando funcionalmente}
+O cientista da computação John Hughes, professor de Ciência da Computação na Chalmers University of Technology em Gothenburg e um dos criadores da linguagem funcional Haskell, em uma entrevista para o canal de YouTube Computerphile, define o paradigma funcional como uma "caixa preta". Ele explica que "programação funcional é essencialmente o tipo de programação onde funções não têm efeitos colaterais. Então, o que significa? Quando você chama uma função, você fornece alguns inputs, e ela vai retornar algum output e é só isso que faz; ela não modifica os inputs, ela não deve fazer isso" (\citeonline{Computerphile2016}). Essa fala destaca um dos principais pilares da programação funcional: o conceito de imutabilidade, que, quando respeitado, pode trazer grandes benefícios para o desenvolvimento de software.
+
+Pensar funcionalmente significa enxergar o código como uma série de transformações previsíveis e reutilizáveis de dados, onde cada função opera de forma isolada, sem depender de estados externos ou variáveis globais. Isso garante maior previsibilidade, facilitando a identificação de erros e a depuração, além de possibilitar a execução de programas de forma paralela com maior segurança, já que não há competição por acesso a dados compartilhados.
+
+Além disso, a programação funcional encoraja a composição de funções, permitindo que problemas complexos sejam resolvidos através da combinação de pequenas funções puras. Esse modelo de pensamento promove clareza no design e evita efeitos colaterais, resultando em software mais fácil de manter e expandir.
+
+Outro ponto importante ao pensar funcionalmente é como essa abordagem promove um design declarativo. Em vez de dizer ao computador "como fazer algo" (como no paradigma imperativo), descrevemos "o que queremos que seja feito". Isso simplifica o raciocínio sobre o código, tornando-o mais próximo da forma como os humanos entendem o problema, e reduz a complexidade associada a detalhes de implementação.
+
+Finalmente, ao adotar uma mentalidade funcional, programadores também desenvolvem uma maior apreciação por conceitos teóricos, como o cálculo lambda e a álgebra de categorias, que fundamentam muitas das práticas modernas de programação. Esses conceitos não apenas ajudam a escrever código mais elegante, mas também oferecem uma nova perspectiva sobre como problemas computacionais podem ser modelados de maneira mais robusta e eficiente.
+
+\begin{table}[H]
+\centering
+\caption{Comparação entre Programação Funcional e Programação Orientada a Objetos}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Aspecto} & \textbf{Programação Funcional} & \textbf{Programação Orientada a Objetos} \\ \hline
+Lida melhor com uso de memória & Sim & Não \\ \hline
+Implementação de funções de alta ordem & Sim & Não \\ \hline
+Foco em estados mutáveis & Não & Sim \\ \hline
+Paralelismo seguro & Sim & Difícil \\ \hline
+Uso de imutabilidade & Sim (central) & Não (geralmente mutável) \\ \hline
+Estruturação de código & Composição de funções & Classes e objetos \\ \hline
+Facilidade para testes & Alta (funções puras) & Média (efeitos colaterais podem dificultar) \\ \hline
+Curva de aprendizado & Alta & Moderada \\ \hline
+Escalabilidade & Melhor em sistemas concorrentes & Depende da implementação \\ \hline
+Desempenho geral & Depende do caso & Geralmente otimizado para aplicações imperativas \\ \hline
+\end{tabular}%
+}
+\label{tab:comparacao_funcional_oo}
+\end{table}
