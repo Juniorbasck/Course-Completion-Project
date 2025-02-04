@@ -7,13 +7,21 @@ Este capítulo apresenta os resultados obtidos durante o desenvolvimento do trab
 
 \section{Comparação entre as APIs Desenvolvidas}
 
-Durante o desenvolvimento das APIs, foram identificadas diferenças significativas nos paradigmas utilizados. Essas diferenças influenciaram diretamente a estruturação do código, a complexidade do sistema e os desafios de manutenção. Para ilustrar essas diferenças, são apresentadas a seguir capturas de tela das APIs e trechos relevantes de código para análise comparativa.
+Durante o desenvolvimento das APIs, foram identificadas diferenças significativas nos paradigmas utilizados. Essas diferenças influenciaram diretamente a estruturação do código, a complexidade do sistema e os desafios de manutenção. Para ilustrar essas diferenças, são apresentadas trechos relevantes de código para análise comparativa.
 
 \subsection{Estrutura do Código}
 
-A estrutura do código em Clojure demonstrou ser mais concisa, com um foco maior em funções puras e imutabilidade. A API funcional foi construída utilizando um modelo declarativo, onde as operações são descritas em termos do que deve ser feito, ao invés de como fazê-lo. Por exemplo, a listagem de notícias no Clojure é implementada de forma a minimizar o uso de estados mutáveis e efeitos colaterais:
+O pesquisador britânico Simon Peyton Jones, um dos principais desenvolvedores da linguagem funcional Haskell e autor de diversos artigos sobre programação funcional e otimização de compiladores, destaca que "a imutabilidade da programação funcional elimina a necessidade de bloqueios e sincronização complexa em ambientes concorrentes" (Peyton, 23).
+Essa característica foi evidente na estrutura do código em Clojure, que demonstrou ser mais concisa, com um foco maior em funções puras e imutabilidade. A API funcional foi construída utilizando um modelo declarativo, no qual as operações são descritas em termos do que deve ser feito, em vez de como fazê-lo.
+Essa abordagem é exemplificada no Quadro 15, que apresenta a implementação de uma listagem de notícias em Clojure, minimizando o uso de estados mutáveis e reduzindo efeitos colaterais.
 
-\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Trecho de Código - Listagem de Notícias em Clojure}]
+
+
+\begin{center}
+    \textbf{Quadro 15 - Listagem de Notícias em Clojure}
+\end{center}
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title=]
 \begin{lstlisting}[language=Lisp]
 (defn listar-noticias [limite]
   (let [url "https://supabase.co/rest/v1/noticias"
@@ -23,9 +31,17 @@ A estrutura do código em Clojure demonstrou ser mais concisa, com um foco maior
 \caption{Exemplo de listagem de notícias utilizando lazy evaluation em Clojure.}
 \end{tcolorbox}
 
-Em contrapartida, a implementação em Java seguiu uma abordagem imperativa, exigindo maior controle manual de estados e tratamento explícito de exceções:
+\begin{center}
+    \textit{Fonte: Elaborado pelo autor, 2024} 
+\end{center}
 
-\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title={Trecho de Código - Listagem de Notícias em Java}]
+Em contrapartida, a implementação em Java, utilizando uma abordagem imperativa, é ilustrada no Quadro 16, evidenciando a necessidade de maior controle manual de estados e tratamento explícito de exceções. Essa característica reflete um dos desafios apontados por (Sandi, 2013), que destaca que "a complexidade desnecessária na programação orientada a objetos pode ser minimizada por meio de boas práticas de design". A dependência de estados mutáveis e a necessidade de gerenciar manualmente exceções podem aumentar a verbosidade e a dificuldade de manutenção do código, torna-se essencial a adoção de padrões que reduzam essa complexidade.
+
+\begin{center}
+    \textbf{Quadro 16 - Listagem de Notícias em Java}
+\end{center}
+
+\begin{tcolorbox}[colback=gray!5!white, colframe=gray!75!black, title=]
 \begin{lstlisting}[language=Java]
 public List<News> listarNoticias(int limite) {
     String url = supabaseUrl + "/noticias";
@@ -36,14 +52,16 @@ public List<News> listarNoticias(int limite) {
     return response.getBody().stream().limit(limite).collect(Collectors.toList());
 }
 \end{lstlisting}
-\caption{Exemplo de listagem de notícias utilizando abordagem imperativa em Java.}
 \end{tcolorbox}
+\begin{center}
+    \textit{Fonte: Elaborado pelo autor, 2024} 
+\end{center}
 
 \subsection{Manutenibilidade e Leitura do Código}
 
 Os resultados mostram que o código em Clojure é mais legível e modular devido ao uso de funções puras e à imutabilidade. Esses fatores simplificam a adição de novas funcionalidades, reduzindo a necessidade de revisar partes já implementadas. Na API em Java, a dependência de estados mutáveis e exceções tornou algumas partes do código mais verbosas e difíceis de entender.
 
-Esses achados estão alinhados com os estudos de Lipovača (\citeyear{Lipovaca11}), que destaca como a imutabilidade reduz a complexidade em sistemas concorrentes e de grande escala.
+Esses achados estão alinhados com os estudos de Lipovača (Lipovaca, 11), que destaca como a imutabilidade reduz a complexidade em sistemas concorrentes e de grande escala.
 
 \subsection{Desempenho e Escalabilidade}
 
@@ -51,15 +69,17 @@ Nos testes realizados, ambas as APIs apresentaram tempos de resposta semelhantes
 
 \subsection{Integração com a Literatura}
 
-Os resultados observados reforçam as vantagens descritas na literatura sobre a programação funcional, como maior previsibilidade e facilidade de manutenção. No entanto, os desafios apontados também são corroborados por autores como Hughes (\citeyear{Hughes90}), que enfatiza a curva de aprendizado como uma barreira para adoção do paradigma funcional.
+Os resultados observados reforçam as vantagens descritas na literatura sobre a programação funcional, como maior previsibilidade e facilidade de manutenção. No entanto, os desafios apontados também são corroborados por autores como Hughes (Hughes, 90), que enfatiza a curva de aprendizado como uma barreira para adoção do paradigma funcional.
 
 \subsection{Discussão}
 
-A comparação entre as APIs mostra que o paradigma funcional oferece vantagens significativas em sistemas complexos e com alta demanda de escalabilidade. A programação funcional é particularmente útil em cenários de concorrência, onde a imutabilidade e a ausência de efeitos colaterais simplificam o controle do estado.
+A comparação entre as APIs mostra que o paradigma funcional oferece vantagens significativas em sistemas complexos e escaláveis, especialmente em cenários de concorrência, onde a imutabilidade e a ausência de efeitos colaterais simplificam o controle do estado.
 
-Por outro lado, a programação orientada a objetos mostrou-se mais prática em termos de familiaridade e ferramentas disponíveis, especialmente para desenvolvedores acostumados ao paradigma. No entanto, a necessidade de lidar com estados mutáveis e exceções pode aumentar a complexidade em projetos maiores.
+Por outro lado, a programação orientada a objetos (POO) continua sendo amplamente utilizada devido à sua familiaridade e suporte da indústria, além da vasta disponibilidade de ferramentas e frameworks que facilitam sua adoção. No entanto, a necessidade de lidar com estados mutáveis e exceções pode aumentar consideravelmente a complexidade de sistemas maiores, dificultando a manutenção a longo prazo.
+Martin Fowler (1999) argumenta que "a refatoração permite que sistemas escritos em paradigmas diferentes adotem melhores práticas para aumentar a legibilidade e reduzir a complexidade". Isso sugere que, independentemente do paradigma escolhido, a qualidade do design e a clareza do código são fatores determinantes para a manutenção e escalabilidade do software. No contexto da POO, técnicas de refatoração ajudam a reduzir a rigidez estrutural do código, enquanto na programação funcional, a modularidade inerente tende a favorecer soluções mais expressivas e enxutas.
 
-Os resultados obtidos também mostram que conceitos funcionais, como imutabilidade e composição de funções, podem ser integrados em linguagens não funcionais para melhorar a qualidade do código. Por exemplo, práticas como o uso de objetos imutáveis e funções puras podem ser aplicadas em linguagens como Java e Python, mesmo fora do contexto de uma linguagem funcional.
+A adoção de padrões de projeto é frequentemente apontada como um meio de melhorar a reutilização e organização do código em sistemas orientados a objetos "A utilização de padrões de projeto na programação orientada a objetos facilita a manutenção do código e melhora sua escalabilidade" (Gamma et al., 1995). No entanto, apesar de sua importância, a aplicação rigorosa desses padrões pode levar a um aumento excessivo da complexidade estrutural. Em projetos muito grandes, a necessidade de seguir múltiplos padrões simultaneamente pode tornar o código difícil de entender e modificar, resultando em uma arquitetura excessivamente fragmentada e burocrática. Isso cria um paradoxo: embora os padrões tenham sido desenvolvidos para simplificar o design de software, sua implementação em larga escala pode acabar tornando o sistema ainda mais difícil de gerenciar.
+Os resultados obtidos também mostram que conceitos funcionais, como imutabilidade e composição de funções, podem ser incorporados em linguagens não funcionais para melhorar a qualidade do código. Conforme destacado por (Fowler, 1999), boas práticas de design independem do paradigma adotado. Por exemplo, o uso de objetos imutáveis e funções puras pode ser aplicado em linguagens como Java e Python, proporcionando maior previsibilidade e reduzindo o acoplamento do código, mesmo fora do contexto de uma linguagem funcional.
 
 \subsection{Limitações do Estudo}
 
@@ -85,5 +105,6 @@ Dentre as principais contribuições deste trabalho, destaca-se a contextualiza�
 
 Por fim, este estudo reforça a importância de pensar funcionalmente, não apenas como um conceito técnico, mas como uma filosofia de desenvolvimento. É possível implementar os princípios da programação funcional em linguagens que não são puramente funcionais, como JavaScript e Python, aproveitando características como imutabilidade e funções puras para tornar o código mais seguro, previsível e modular. Essa abordagem contribui diretamente para o desenvolvimento de sistemas mais robustos e alinhados às demandas do mercado atual.
 O trabalho realizado também abre espaço para pesquisas futuras, como a aplicação do paradigma funcional em áreas emergentes, incluindo inteligência artificial e computação paralela, onde a imutabilidade e a ausência de estados mutáveis podem resolver problemas de concorrência com maior eficiência. Além disso, destaca-se a importância de explorar mais profundamente os desafios de sua adoção no ensino acadêmico e na indústria, promovendo a disseminação desse paradigma e preparando os profissionais para utilizá-lo de forma eficaz em projetos reais.
+\cite{Hughes90}, \cite{Lipovaca11}, \cite{Kay93}, \cite{Hickey2020}, \cite{Church1936}, \cite{Computerphile2016}, \cite{Higginbotham15}, \cite{Rodrigues2022}, \cite{Codigofonte2024}, \cite{Guedes2020}, \cite{Gamma1995}, \cite{Fowler1999}, \cite{PeytonJones2003}, \cite{Sestoft1997}, \cite{Booch2007}, \cite{Metz2013}
 
 

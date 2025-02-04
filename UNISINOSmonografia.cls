@@ -447,7 +447,9 @@
 	\begingroup
 		\centering%
 		\vbox to 6cm{%
-			INSTITUTO FEDERAL DE S{\~A}O PAULO --- IFSP\\
+			INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA\\
+                E TECNOLOGIA DE SÃO PAULO\\
+                CAMPUS VOTUPORANGA\\
 			\uppercase\expandafter{\@unidade}\\
 			\@ifundefined{@curso}{}{\uppercase\expandafter{\@curso}\\}%
 			\@ifundefined{@nivel}{}{\uppercase\expandafter{\@nivel}\\}%
@@ -476,10 +478,10 @@
 %=======================================================================
 \DeclareRobustCommand{\folhaderosto}{%
 	\clearpage%
-	\vspace*{6cm}
+	\vspace*{1cm}
 	\begingroup
 		\centering%
-		\vbox to 6cm{%
+		\vbox to 10cm{%
 			\@authorfirst~\@authorlast\\
 			\vfill
 			\textbf{\uppercase\expandafter{\@title}}%

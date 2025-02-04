@@ -30,11 +30,12 @@
 %=======================================================================
 \let\listof\relax
 
-\documentclass[english,brazilian]{UNISINOSmonografia}
+\documentclass[12pt,english,brazilian]{UNISINOSmonografia}
 
 % Configurações de codificação e fontes
 \usepackage[utf8]{inputenc} % Charset do texto
 \usepackage[T1]{fontenc}    % Encoding da fonte
+\usepackage{titlesec}
 
 % Gráficos, tabelas e elementos adicionais
 \usepackage{graphicx}       % Inclusão de gráficos e figuras
@@ -42,7 +43,8 @@
 \usepackage{amsmath}        % Comandos matemáticos avançados
 \usepackage{algorithm}      % Algoritmos
 \usepackage{algpseudocode}  % Pseudocódigo em algoritmos
-\usepackage{lmodern}        % Fonte Latin Modern
+\usepackage{helvet}  
+\renewcommand{\familydefault}{\sfdefault} 
 \usepackage{listings}       % Código-fonte com destaque de sintaxe
 \usepackage{xcolor}         % Suporte para cores
 \usepackage{tcolorbox} 
@@ -53,21 +55,25 @@
 % Citações no estilo ABNT
 \usepackage{bibentry} 
 %\usepackage[alf]{abntex2cite}
+
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 
-\setlength{\parindent}{1.25cm} % Define o recuo da primeira linha de cada parágrafo
+\setlength{\parindent}{1cm} % Define o recuo da primeira linha de cada parágrafo
 \setlength{\parskip}{0pt} 
 \linespread{1.5} % Espaçamento de 1,5 no corpo do texto
-\pagenumbering{roman} % Numeração em romanos para a seção pré-textual
 % Após a introdução ou outra parte textual:
 \pagenumbering{arabic} % Numeração arábica para o restante do trabalho
 \usepackage{setspace}
 \usepackage{quoting}
-\quotingsetup{left=4cm, right=0cm, font=small}
 \usepackage{titlesec}
-\titleformat{\chapter}[hang]{\bfseries\LARGE}{\thechapter}{2pc}{}
-\titleformat{\section}[hang]{\bfseries\Large}{\thesection}{1pc}{}
+\titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{1pc}{}
+\titlespacing{\chapter}{0pt}{0pt}{1pc} % Remove espaçamentos extras nos capítulos
+
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection}{1pc}{}
+\titlespacing{\section}{1pt}{1pt}{1pc} % Remove espaçamento extra antes da seção
+
 \titleformat{\subsection}[hang]{\bfseries\large}{\thesubsection}{1pc}{}
+\titlespacing{\subsection}{0pt}{1pt}{1pc} % Remove espaçamento extra antes da subseção
 
 
 \lstset{
@@ -105,7 +111,7 @@
 \orientador[Prof. Dr.]{Marcelo Luis Murari}{}
 %\coorientador[Prof. Dr.]{Lamport}{Leslie}
 \local{Votuporanga}
-\ano{2025}
+\ano{2024}
 
 %% dados específicos para Dissertação de Mestrado
 %\unidade{Unidade Acadêmica de Pesquisa e Pós-Graduação}
@@ -121,8 +127,7 @@
 %\bibliotecario{Bibliotecária responsável: Fulana da Silva}{12/3456}
 
 %% dados específicos para monografia de Graduação
-\unidade{IFSP - Campus Votuporanga}
-\curso{Curso Bacharelado de sistemas de informação - BSI}
+\unidade{}
 \natureza{%
 Trabalho de Conclusão de Curso apresentado como requisito parcial
 para a obtenção do título de Bacharel em Sistemas de informação
@@ -132,9 +137,11 @@ para a obtenção do título de Bacharel em Sistemas de informação
 % outra no idioma estrangeiro (na verdade, em tantos idiomas quantos se
 % desejar).
 \palavrachave{brazilian}{Programação Funcional}
-\palavrachave{brazilian}{Desempenho e Manutenção}
+\palavrachave{brazilian}{Manutenção}
 \palavrachave{brazilian}{Imutabilidade}
 \palavrachave{brazilian}{Escalabilidade de Software}
+\palavrachave{brazilian}{Funções Puras}
+
 
 %=======================================================================
 % Início do documento.
@@ -155,7 +162,7 @@ para a obtenção do título de Bacharel em Sistemas de informação
 Aos nossos pais.\\[4ex] % quebra a linha dando um espaçamento maior
 \begin{itshape} % faz o texto ficar em itálico
 Se eu vi mais longe do que outros,\\
-it is because I stood on the shoulders of giants.\\
+é porque me apoiei nos ombros de gigantes.\\
 \end{itshape}
 --- \textsc{Sir Isaac Newton} % \textsc é o "small caps"
 \end{dedicatoria}
